@@ -1,8 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule); // on instancie l'application
-  await app.listen(3000); // on exécute le serveur sur le port 3000
+  // on instancie l'application
+  const app = await NestFactory.create(AppModule);
+
+  // activation globalement des pipes de validation dans l'app
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+    }),
+  );
+
+  // on exécute le serveur sur le port 3000
+  await app.listen(3000);
 }
 bootstrap();
