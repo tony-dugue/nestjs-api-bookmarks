@@ -49,39 +49,44 @@ $ yarn install
 
 ## Démarrer l'application
 ***
+(1) démarrer l'application docker
 
-Pour démarrer le serveur de développement (à la racine du projet) :
+(2) Démarrer le serveur de développement (à la racine du projet) :
 ```bash
 $ yarn start #ou $ npm run start
 ```
 
-Pour le watch mode
+Ou avec le watch mode
 ```bash
 $ yarn start:dev #ou $ npm run start:dev
 ```
 
-pour démarrer la base de données
+(3) dans un 2nd terminal, démarrer la visualisation de la base de données avec prisma :
 ```bash
-# après avoir démarrer l'application docker
-$ docker compose up dev-db -d
+$ npx prisma studio
 ```
 
+### Autres commandes
+
+Voir les containers docker en cours de fonctionnement (si la bdd est bien démarrée) :
+```bash
+$ docker ps
+```
+
+pour redémarrer la base de données (script auto pour tuer la bdd, la redémarrer et appliquer toutes les migrations) :
+```bash
+# après avoir démarrer l'application docker
+$ yarn db:dev:restart
+```
 
 Préparer l'application pour la production :
 ```bash
 $ yarn start:prod #ou $ npm run start:prod
 ```
 
-### Prisma
-
-Générer une migration :
+Générer une migration manuellement :
 ```bash
 $ npx prisma migrate dev
-```
-
-Visualisation de la base de données :
-```bash
-$ npx prisma studio
 ```
 
 ## Test
