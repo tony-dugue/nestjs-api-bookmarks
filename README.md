@@ -93,14 +93,13 @@ $ npx prisma migrate dev
 ***
 
 ```bash
-# unit tests
-$ npm run test
-
 # e2e tests
-$ npm run test:e2e
+$ yarn test:e2e #ou $ npm run test:e2e
+```
 
-# test coverage
-$ npm run test:cov
+visualisation de la base de données de test avec prisma :
+```bash
+$ npx dotenv -e .env.test -- prisma studio
 ```
 
 ## Ressources utilisées dans le projet
